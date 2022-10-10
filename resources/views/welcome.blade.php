@@ -152,7 +152,7 @@ use Carbon\Carbon;
                     $.map(response.task, function(val, i) {
                         let checkcomplete = val.is_complete == 1 ? 'checked' : '';
                         let html = `<tr>
-                            <td><input type="checkbox" id="check${val.id}" ${checkcomplete} class="complete" data-id="${val.id}"></td>
+                            <td><input type="checkbox" id="check${val.id}" class="complete" data-id="${val.id}" ${checkcomplete}></td>
                             <td><label for="check${val.id}" data-id="${val.id}">${val.task}  <span class="text-success">(${val.time})</span></label></td>
                             <td><button class="btn btn-danger btn-sm delete" data-id="${val.id}"><i class="fa fa-trash"></i></button></td>
                         </tr>`;

@@ -14,7 +14,8 @@ class ToDoListController extends Controller
             $taskrow = [
                 'id'=>$task->id,
                 'task'=>$task->task,
-                'time'=>$task->created_at->diffForHumans()
+                'time'=>$task->created_at->diffForHumans(),
+                'is_complete'=>$task->is_complete
             ];
             array_push($taskData,$taskrow);
         }
@@ -29,7 +30,8 @@ class ToDoListController extends Controller
             $taskrow = [
                 'id'=>$task->id,
                 'task'=>$task->task,
-                'time'=>$task->created_at->diffForHumans()
+                'time'=>$task->created_at->diffForHumans(),
+                'is_complete'=>$task->is_complete
             ];
             array_push($taskData,$taskrow);
         }
@@ -72,7 +74,8 @@ class ToDoListController extends Controller
         $taskdata = [
             'id'=>$task->id,
             'task'=>$task->task,
-            'time'=>$task->created_at->diffForHumans()
+            'time'=>$task->created_at->diffForHumans(),
+            'is_complete'=>$task->is_complete
         ];
         return response()->json(['result'=>'Task Added.','task'=>$taskdata]);
     }
