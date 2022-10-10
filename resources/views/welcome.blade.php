@@ -130,7 +130,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        function dataNotFound(){
+        function dataNotFound() {
             setTimeout(() => {
                 if ($("#taskTbl tr").length > 0) {
                     $('.nodata').hide();
@@ -207,10 +207,10 @@
                         console.log(result)
                         click.prop("checked", false)
                         Swal.fire(
-                                    'Mark Not Complete!',
-                                    'Your task not complete.',
-                                    'success'
-                                )
+                            'Mark Not Complete!',
+                            'Your task not complete.',
+                            'success'
+                        )
                     }
                 });
             } else if ($(this).prop("checked") == true) {
@@ -222,14 +222,14 @@
                         "_token": "{{ csrf_token() }}"
                     },
                     success: function(result) {
-                        if($('#showAllTask').prop("checked") == false){
+                        if ($('#showAllTask').prop("checked") == false) {
                             click.closest("tr").fadeOut(1000).delay(5000).remove()
                         }
                         Swal.fire(
-                                    'Mark Completed!',
-                                    'Your task completed.',
-                                    'success'
-                                )
+                            'Mark Completed!',
+                            'Your task completed.',
+                            'success'
+                        )
                         dataNotFound()
                     }
                 });
@@ -305,7 +305,7 @@
             let clickBtn = $(this)
             var postID = $(this).data('id');
             Swal.fire({
-                title: 'Are you sure?',
+                title: 'Are you sure delete this task?',
                 text: "You won't be able to revert this task!",
                 icon: 'warning',
                 showCancelButton: true,
