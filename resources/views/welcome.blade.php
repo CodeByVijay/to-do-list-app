@@ -138,7 +138,7 @@ use Carbon\Carbon;
                 if ($("#taskTbl tr").length > 0) {
                     $('.nodata').hide();
                 } else {
-                    $('#taskTbl').html('<h3 class="text-center nodata">No Task Available.</h3>')
+                    $('#taskTbl').html('<h3 class="text-center nodata">No Pending Task.</h3>')
                 }
             }, 500);
         }
