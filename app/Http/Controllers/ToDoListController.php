@@ -9,12 +9,32 @@ class ToDoListController extends Controller
 {
     public function getAllTask(){
         $tasks = ToDoList::orderBy('id', 'DESC')->get();
-        return response()->json(['task'=>$tasks]);
+        $taskData = [];
+        foreach($tasks as $task){
+            $taskrow = [
+                'id'=>$task->id,
+                'task'=>$task->task,
+                'time'=>$task->created_at->diffForHumans()
+            ];
+            array_push($taskData,$taskrow);
+        }
+        return response()->json(['task'=>$taskData]);
+
     }
 
     public function getNotCompleteTask(){
         $tasks = ToDoList::where('is_complete',0)->orderBy('id', 'DESC')->get();
-        return response()->json(['task'=>$tasks]);
+        $taskData = [];
+        foreach($tasks as $task){
+            $taskrow = [
+                'id'=>$task->id,
+                'task'=>$task->task,
+                'time'=>$task->created_at->diffForHumans()
+            ];
+            array_push($taskData,$taskrow);
+        }
+
+        return response()->json(['task'=>$taskData]);
     }
 
     public function doneTask(Request $req){
@@ -49,7 +69,12 @@ class ToDoListController extends Controller
         $task = new ToDoList();
         $task->task = $req->task;
         $task->save();
-        return response()->json(['result'=>'Task Added.','task'=>$task]);
+        $taskdata = [
+            'id'=>$task->id,
+            'task'=>$task->task,
+            'time'=>$task->created_at->diffForHumans()
+        ];
+        return response()->json(['result'=>'Task Added.','task'=>$taskdata]);
     }
 
     public function deleteTask(Request $req){
