@@ -96,6 +96,8 @@ use Carbon\Carbon;
     <div class="container w-50 mt-4 mb-4">
         <div class="card">
             <div class="card-header">
+                <h2 class="text-center text-primary">To Do List</h2>
+                <hr>
                 <label class="switch">
                     <input type="checkbox" id="showAllTask">
                     <span class="slider"></span>
@@ -153,7 +155,7 @@ use Carbon\Carbon;
                         let checkcomplete = val.is_complete == 1 ? 'checked' : '';
                         let html = `<tr>
                             <td><input type="checkbox" id="check${val.id}" class="complete" data-id="${val.id}" ${checkcomplete}></td>
-                            <td><label for="check${val.id}" data-id="${val.id}">${val.task}  <span class="text-success">(${val.time})</span></label></td>
+                            <td><label data-id="${val.id}">${val.task}  <span class="text-success">(${val.time})</span></label></td>
                             <td><button class="btn btn-danger btn-sm delete" data-id="${val.id}"><i class="fa fa-trash"></i></button></td>
                         </tr>`;
                         $('#taskTbl').append(html)
@@ -172,7 +174,7 @@ use Carbon\Carbon;
                     $.map(response.task, function(val, i) {
                         let html = `<tr>
                             <td><input type="checkbox" id="check${val.id}" class="complete" data-id="${val.id}"></td>
-                            <td><label for="check${val.id}" data-id="${val.id}">${val.task}  <span class="text-success">(${val.time})</span></label></td>
+                            <td><label data-id="${val.id}">${val.task}  <span class="text-success">(${val.time})</span></label></td>
                             <td><button class="btn btn-danger btn-sm delete" data-id="${val.id}"><i class="fa fa-trash"></i></button></td>
                         </tr>`;
                         $('#taskTbl').append(html)
@@ -289,7 +291,7 @@ use Carbon\Carbon;
                     success: function(response) {
                         let html = `<tr>
                             <td><input type="checkbox" id="check${response.task.id}" class="complete" data-id="${response.task.id}"></td>
-                            <td><label for="check${response.task.id}" data-id="${response.task.id}">${response.task.task}  <span class="text-success">(${response.task.time})</span></label></td>
+                            <td><label data-id="${response.task.id}">${response.task.task}  <span class="text-success">(${response.task.time})</span></label></td>
                             <td><button class="btn btn-danger btn-sm delete" data-id="${response.task.id}"><i class="fa fa-trash"></i></button></td>
                         </tr>`;
                         $('#taskTbl').prepend(html)
