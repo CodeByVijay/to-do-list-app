@@ -280,6 +280,14 @@ use Carbon\Carbon;
         // Add Task
         $('#addTask').on('click', function() {
             let taskval = $('#task').val();
+            if (taskval === '') {
+                Swal.fire(
+                    'Task Blank!',
+                    'Please Enter Any Task.',
+                    'warning'
+                )
+                return false;
+            }
             if ($('#addTask').attr("disabled", false)) {
                 $.ajax({
                     type: "post",
